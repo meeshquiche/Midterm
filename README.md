@@ -37,3 +37,44 @@ Hey! This is my midterm project for the DL Challenge 2026. It’s a small city d
 
 ```bash
 conda activate traffic_dashboard
+python generate_data.py
+uvicorn api:app --reload
+python run_app.py
+
+## File Guide
+
+| File | Purpose |
+|------|---------|
+| `generate_data.py` | Creates fake congestion data |
+| `api.py` | REST API to access data |
+| `ai_summary.py` | Generates AI-based summaries |
+| `app.py` | Streamlit/Shiny dashboard |
+| `run_app.py` | Launches the dashboard in your browser |
+| `.env` | Stores OpenAI API key (ignored in GitHub) |
+
+---
+
+## Why this is cool
+
+- You can see which locations are congested **right now**.  
+- Compare current congestion to **recent trends**.  
+- Get a **plain-language summary with AI**.  
+- All components (**data → API → dashboard → AI**) talk to each other seamlessly.  
+
+---
+
+## Future Improvements
+
+- Add more locations or longer time periods.  
+- Compare today’s congestion vs historical averages automatically.  
+- Deploy fully to **DigitalOcean or Posit Connect** so anyone can open it in a browser.  
+
+---
+
+## Testing
+
+Run the dashboard locally and try these queries:
+
+- “Which intersections are worst right now?” → `/congestion/current`  
+- “Show me high congestion locations over the last 3 days” → `/congestion/time`  
+- “Get AI summary of today’s traffic” → summary displayed in dashboard
