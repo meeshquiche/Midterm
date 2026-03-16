@@ -13,7 +13,6 @@ for day in range(14):
             timestamp = start + timedelta(days=day, hours=hour)
 
             base = random.randint(20,60)
-
             if hour in [7,8,9,16,17,18]:
                 base += random.randint(20,40)
 
