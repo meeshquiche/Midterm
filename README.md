@@ -31,50 +31,140 @@ Hey! This is my midterm project for the DL Challenge 2026. It’s a small city d
 
 ---
 
-## How to run it
+## 🚀 How to Run the Project
 
-1. Activate your environment:
+### 1. Open the Project in VS Code
+Make sure you open the correct folder:
+```
+C:\Users\meesh\projects\Midterm
+```
 
+---
+
+### 2. Open a Terminal in VS Code
+Go to:
+```
+Terminal → New Terminal
+```
+
+You should see something like:
+```
+PS C:\Users\meesh\projects\Midterm>
+```
+
+---
+
+### 3. Activate the Environment
 ```bash
 conda activate traffic_dashboard
+```
+
+---
+
+### 4. Generate Fake Data
+```bash
 python generate_data.py
+```
+
+This creates the dataset used by the API and dashboard.
+
+---
+
+### 5. Start the API (Keep This Running)
+```bash
 uvicorn api:app --reload
+```
+
+You should see:
+```
+Uvicorn running on http://127.0.0.1:8000
+```
+
+⚠️ Do NOT close this terminal.
+
+---
+
+### 6. Open a New Terminal
+Click the **+** button in the terminal panel, then run:
+```bash
+conda activate traffic_dashboard
 python run_app.py
-
-## File Guide
-
-| File | Purpose |
-|------|---------|
-| `generate_data.py` | Creates fake congestion data |
-| `api.py` | REST API to access data |
-| `ai_summary.py` | Generates AI-based summaries |
-| `app.py` | Streamlit/Shiny dashboard |
-| `run_app.py` | Launches the dashboard in your browser |
-| `.env` | Stores OpenAI API key (ignored in GitHub) |
+```
 
 ---
 
-## Why this is cool
-
-- You can see which locations are congested **right now**.  
-- Compare current congestion to **recent trends**.  
-- Get a **plain-language summary with AI**.  
-- All components (**data → API → dashboard → AI**) talk to each other seamlessly.  
-
----
-
-## Future Improvements
-
-- Add more locations or longer time periods.  
-- Compare today’s congestion vs historical averages automatically.  
-- Deploy fully to **DigitalOcean or Posit Connect** so anyone can open it in a browser.  
+### 7. Open the Dashboard
+Go to:
+```
+http://localhost:8501
+```
 
 ---
 
-## Testing
+## 🧠 How the System Works
 
-Run the dashboard locally and try these queries:
+This project is structured as a modular pipeline:
 
-- “Which intersections are worst right now?” → `/congestion/current`  
-- “Show me high congestion locations over the last 3 days” → `/congestion/time`  
-- “Get AI summary of today’s traffic” → summary displayed in dashboard
+- **Data Layer**
+  - `generate_data.py` → Creates synthetic congestion data
+
+- **API Layer**
+  - `api.py` → Serves data via endpoints:
+    - `/congestion/current`
+    - `/congestion/time`
+
+- **AI Layer**
+  - `ai_summary.py` → Generates natural language insights
+
+- **Frontend Layer**
+  - `app.py` → Dashboard interface
+
+---
+
+## ⚠️ Common Issues & Fixes
+
+### Terminal Already Running
+Use **two terminals**:
+- Terminal 1 → API
+- Terminal 2 → Dashboard
+
+---
+
+### Module Not Found Error
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### API Not Working
+Test in browser:
+```
+http://127.0.0.1:8000/congestion/current
+```
+
+---
+
+### Dashboard Shows "No Data"
+- Make sure you ran:
+  ```bash
+  python generate_data.py
+  ```
+- Ensure the API is running
+
+---
+
+## 💡 Why This Project Stands Out
+
+- Real-time congestion insights  
+- Historical trend comparison  
+- AI-generated summaries  
+- Modular system design (data → API → AI → UI)  
+
+---
+
+## 🔮 Future Improvements
+
+- Add more locations and longer time ranges  
+- Compare real-time vs historical averages automatically  
+- Deploy to cloud (DigitalOcean / Posit Connect)  
