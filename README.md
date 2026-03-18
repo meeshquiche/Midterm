@@ -1,10 +1,7 @@
 # City Congestion Monitoring Dashboard for SYSEN 5381 Midterm
-
 Hey! This is my midterm project for the DL Challenge 2026. It’s a small city dashboard that shows congestion levels in a city, lets you explore them over time, and even gives short AI-generated summaries of what’s going on.
 
----
-
-## What this does
+## 🧠 What this does
 
 ### Simulates congestion data
 - 5 locations, 14 days, hourly readings.  
